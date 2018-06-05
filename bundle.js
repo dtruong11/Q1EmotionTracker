@@ -1,3 +1,153 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+let emotions = ["happy", "sad", "mad", "brave", "embarrassed", "friendly", "sorry", "disappointed", "frustrated", "silly", "hopeful", "left-out", "excited", "jealous", "curious", "cranky", "insecure", "greatful", "loved", "guilty", "uncomfortable", "shy", "hurt", "surprised", "scared", "kind"]
+
+module.exports = emotions;
+
+},{}],2:[function(require,module,exports){
+const renderEmo = require('./renderEmo')
+const renderGrid = require('./render-grid')
+const emotions = require('./emotion-list')
+
+renderGrid(emotions);
+
+//Add event listener to div containing images + render specific div
+const arrEmo = Array.from(document.querySelectorAll('.emotion'))
+
+arrEmo.forEach((emotion) => {
+  emotion.addEventListener('click', () => {
+    renderEmo(emotion)
+  })
+})
+
+//get the input from the modal
+
+},{"./emotion-list":1,"./render-grid":3,"./renderEmo":4}],3:[function(require,module,exports){
+const temp = require('./template-grid')
+
+function renderGrid (emotions) {
+  document.body.innerHTML += `${temp.templateGrid(emotions)}`
+}
+
+module.exports = renderGrid;
+
+},{"./template-grid":5}],4:[function(require,module,exports){
+const templatesComics = require('./templates-comics')
+const templatesVideos = require("./templates-videos")
+const urls = require('./urls')
+
+const renderEmo = (emotion) => {
+  const urlEmo = urls[emotion]
+    document.body.innerHTML +=
+       `
+      <div class="${emotion} text-center">
+        <img src="/emotions/${emotion}.PNG" width="110px" alt="${emotion}">
+        <h6 class="display-4">You are ${emotion}, then me too.</h6>
+
+        ${templatesVideos.checkOutVideos(urlEmo)}
+        ${templatesComics.checkOutComics(emotion)}
+
+        <div class="ask">
+          <p>Do you feel better now?</p>
+          <span>
+            <i class="far fa-thumbs-up" id="positive"></i>
+            <i class="far fa-thumbs-down id="negative"></i>
+          </span>
+        </div>
+      `
+
+}
+
+module.exports = renderEmo;
+
+},{"./templates-comics":6,"./templates-videos":7,"./urls":8}],5:[function(require,module,exports){
+const emotionGrid = (emotion) => {
+
+  return `<div class="p-2 emotion  col-sm-6 col-md-4 col-lg-3 border border-warning" id="${emotion}">
+            <img src="/emotions/${emotion}.PNG" width="60%" alt="${emotion}">
+        </div>
+        `
+}
+
+const templateGrid = (emotions) => {
+  const grids = emotions.map(emotion =>  { return emotionGrid(emotion)}).join('')
+
+  return `
+  <div class="home">
+    <div class="greeting">
+      <h6 class="display-4">Hi</h6>
+      <h6 class="display-4">How do you feel?</h6>
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-center mt-4 text-center">
+      ${grids}
+    </div>
+  </div>
+  `
+}
+
+module.exports = {
+  emotionGrid,
+  templateGrid
+}
+
+},{}],6:[function(require,module,exports){
+function comic(emotion, index) {
+  return `
+  <div class="col">
+    <img src="/comics/${emotion}/${emotion}${index}.jpg" alt="${emotion}${index}" class="comics">
+  </div>
+  `
+}
+
+function checkOutComics(emotion) {
+  let result = ""
+  for (let i = 1; i <= 4; i++) {
+    result += comic(emotion, i)
+  }
+
+  return `
+  <p>Check out these comic strips</p>
+    <div class="container">
+      ${result}
+    </div>
+`
+}
+
+module.exports = {
+  comic,
+  checkOutComics
+}
+
+},{}],7:[function(require,module,exports){
+function video(url) {
+  return `
+    <div class="col">
+      <iframe width="80%" src="${url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  `
+}
+
+function checkOutVideos(urlEmo) {
+    const videoTags = urlEmo.map(url => video(url)).join('')
+
+  //const videos = urls.map(url => video(url)).join('')
+
+  return `
+    <p>Check out these videos</p>
+    <div class="container mb-2">
+      <div class="row">
+          ${videoTags}
+      </div>
+    </div>
+  `
+}
+
+module.exports = {
+  video,
+  checkOutVideos
+}
+
+},{}],8:[function(require,module,exports){
 let urls = {
   "happy": [
     "https://www.youtube.com/embed/MOWDb2TBYDg?ecver=1",
@@ -134,3 +284,5 @@ let urls = {
 
 
 module.exports = urls;
+
+},{}]},{},[2]);

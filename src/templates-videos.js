@@ -6,8 +6,8 @@ function video(url) {
   `
 }
 
-function checkOutVideos(urls = {}, key) {
-  const videos = video(urls[key].map(url => video(url)).join(''))
+function checkOutVideos(urlEmo) {
+    const videoTags = urlEmo.map(url => video(url)).join('')
 
   //const videos = urls.map(url => video(url)).join('')
 
@@ -15,8 +15,13 @@ function checkOutVideos(urls = {}, key) {
     <p>Check out these videos</p>
     <div class="container mb-2">
       <div class="row">
-          ${videos}
+          ${videoTags}
       </div>
     </div>
   `
+}
+
+module.exports = {
+  video,
+  checkOutVideos
 }
