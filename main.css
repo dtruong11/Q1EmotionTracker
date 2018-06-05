@@ -1,0 +1,39 @@
+
+.a-color:hover {
+    background-color: #FF7A42;
+}
+
+
+.emotion img {
+  min-width: 90px;
+  width: 110px;
+}
+
+.logo {
+  min-width: 30px;
+  width: 40px;
+  height: 40px;
+}
+.display-4 {
+  font-size: 20px;
+  text-align: center;
+  font-weight: 400;
+}
+
+@media (min-width: 992px){
+  .p-2.emotion.col-sm-6.col-md-4.border.border-warning {
+    width: 14%;
+  }
+}
+
+.quotes {
+  width: 75%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.comics {
+  width: 80%;
+  height: 100%;
+  overflow: hidden;
+}
