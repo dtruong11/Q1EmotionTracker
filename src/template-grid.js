@@ -1,7 +1,7 @@
 const emotionGrid = (emotion) => {
 
   return `
-    <div class="p-2 emotion  col-sm-6 col-md-4 col-lg-3 border border-warning" id="${emotion}">
+    <div class="p-2 emotion  col-sm-6 col-md-4 col-lg-3" id="${emotion}">
       <a href="#emoticons">
         <img src="/emotions/${emotion}.PNG" width="60%" alt="${emotion}">
       </a>
