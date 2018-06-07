@@ -4706,11 +4706,11 @@ const renderEmo = (emotion) => {
          ${thisMoment.format('LT')}
         </label>
          <div class="form-group">
-          <input id="userNote" class="form-control form-control-sm" type="text" placeholder="your note" maxlength="30">
+          <input id="userNote" class="form-control form-control-sm" type="text" placeholder="your note" maxlength="40">
           <div>
         </div>
        </div>
-       <button class="btn btn-primary btn-sm mt-3" name="submit" id="date-time" type="submit">
+       <button class="btn btn-primary btn-sm mt-3" name="submit" id="modalSaveEmo" type="submit">
        Submit
        </button>
       </form>

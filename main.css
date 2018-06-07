@@ -42,11 +42,6 @@
   font-size: 18px;
 }
 
-.required {
-  color: red;
-  font-weight: bold;
-}
-
 button.center {
   margin: auto;
 }
