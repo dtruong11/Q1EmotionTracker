@@ -6,6 +6,8 @@ Technology used:
 + HTML, CSS, JavaScript
 + Highcharts, Moment.JS, Bootstrap
 
-<p align="center">
-  <img src="C:\Users\diept\OneDrive\Programming\Galvanize\Q1project\slide-screenshot.png" width="350"/>
-</p>
+This project also uses local storage and client side validation. 
+
+![Home page](screenshots/homepage.PNG)
+![Example](screenshots/content-excited.PNG)
+
