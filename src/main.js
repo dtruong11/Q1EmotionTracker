@@ -12,6 +12,8 @@ function saveName(event) {
   event.preventDefault()
   const loginName = document.querySelector('#modalName').value
   localStorage.setItem("name", loginName)
+
+  $('#exampleModalCenter').modal('hide')
 }
 
 function updateGraph (event) {

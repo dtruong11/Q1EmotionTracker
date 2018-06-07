@@ -2,7 +2,7 @@ function renderGraph() {
   //grab name to progress's page
   document.querySelector('#user-name').innerHTML = localStorage.getItem("name") ? localStorage.getItem("name") : "Mr.X"
 
-  const dataset = JSON.parse(localStorage.getItem('data'))
+  const dataset = JSON.parse(localStorage.getItem('data')) || []
   const dataArray = formatData(dataset)
 
   Highcharts.chart('graph', {
@@ -20,8 +20,16 @@ function renderGraph() {
       }
     },
 
+    time: {
+      timezoneOffset: 7 * 60
+    },
+
     xAxis: {
-      type: 'datetime'
+      labels: {
+        formatter: function () {
+          return moment(this.value).format('hh:mm A')
+        }
+      }
     },
 
     legend: {
@@ -34,6 +42,26 @@ function renderGraph() {
       series: {
         label: {
           connectorAllowed: false
+        },
+        cursor: 'pointer',
+        point: {
+          events: {
+            click: function(e) {
+              hs.htmlExpand(null, {
+                pageOrigin: {
+                  x: e.pageX || e.clientX,
+                  y: e.pageY || e.clientY
+                },
+                headingText: this.options.name,
+                maincontentText: Highcharts.dateFormat('%A, %b %e, %Y', this.x) + ':<br/> ' +
+                  this.options.note,
+                width: 200
+              });
+            }
+          }
+        },
+        marker: {
+          lineWidth: 1
         }
       }
     },
@@ -42,6 +70,7 @@ function renderGraph() {
       name: 'mood',
       data: dataArray
     }],
+
     responsive: {
       rules: [{
         condition: {
@@ -61,9 +90,15 @@ function renderGraph() {
 
   function formatData(dataset) {
     const dataArray = []
-    for (let date in dataset) {
-      dataArray.push([parseInt(date)+18000000, dataset[date].score])
+    for (let date of dataset) {
+      dataArray.push({
+        x: date.time,
+        y: date.score,
+        name: date.emotion,
+        note: date.note
+      })
     }
+    console.log(moment(dataArray[0].x).format('hh:mm A'))
     return dataArray
   }
 }

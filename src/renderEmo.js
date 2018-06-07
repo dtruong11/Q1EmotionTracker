@@ -4,11 +4,14 @@ const moodRating = require("./mood-rating")
 const renderGraph = require("./render-graph")
 
 const urls = require('./urls')
-let moment = require('moment')
+let moment = require('moment-timezone');
+console.log(moment())
+
+
 
 const renderEmo = (emotion) => {
   const urlEmo = urls[emotion]
-  const thisMoment = moment()
+  const thisMoment = moment();
 
   const emoticonContent =
     `<div class="${emotion} text-center">
@@ -72,20 +75,23 @@ const renderEmo = (emotion) => {
     event.preventDefault()
 
     let note = document.querySelector('#userNote').value
-    const millisThisMoment = thisMoment.valueOf().toString()
+    const millisThisMoment = thisMoment.valueOf()
     const newData = {
       "score": moodRating[emotion],
       "emotion": emotion,
-      "note": note
+      "note": note,
+      "time": millisThisMoment
+
     }
 
     //check in local storage, if exists, parse/ if not, create data
     let data = JSON.parse(localStorage.getItem('data'))
     if (!data) {
-      data = {}
+      data = []
     }
-    data[millisThisMoment] = newData
+    data.push(newData)
     localStorage.setItem("data", JSON.stringify(data))
+    $('#Modal').modal('hide')
   }
 }
 
