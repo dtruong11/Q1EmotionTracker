@@ -4514,30 +4514,25 @@ module.exports = emotions;
 },{}],3:[function(require,module,exports){
 const renderGrid = require('./render-grid')
 const emotions = require('./emotion-list')
+const renderGraph = require('./render-graph')
 
 renderGrid(emotions);
+renderGraph();
 
 document.querySelector('#saveName').addEventListener("click", saveName)
+document.querySelector('#saveName').addEventListener("click", updateGraph)
 
-function saveName (event){
-   event.preventDefault()
-   const loginName = document.querySelector('#modalName').value
-   localStorage.setItem("name", loginName)
+function saveName(event) {
+  event.preventDefault()
+  const loginName = document.querySelector('#modalName').value
+  localStorage.setItem("name", loginName)
 }
 
-//Save like rate to local storage
-// document.querySelector('.thumbsUp').addEventListener('click', like)
-//
-// function like (event) {
-//   const countUpStr = localStorage.getItem('countUp')
-//     if (countUpStr) {
-//     const countUps = JSON.parse(localStorage.getItem("countUp"));
-//     countUps ++
-//   }
-//
-// }
+function updateGraph (event) {
+  renderGraph()
+}
 
-},{"./emotion-list":2,"./render-grid":5}],4:[function(require,module,exports){
+},{"./emotion-list":2,"./render-graph":5,"./render-grid":6}],4:[function(require,module,exports){
 const moodRating = {
 "happy" : 5,
 "sad" : 1,
@@ -4570,6 +4565,79 @@ const moodRating = {
 module.exports = moodRating; 
 
 },{}],5:[function(require,module,exports){
+function renderGraph() {
+  //grab name to progress's page
+  document.querySelector('#user-name').innerHTML = localStorage.getItem("name") ? localStorage.getItem("name") : "Mr.X"
+
+  const dataset = JSON.parse(localStorage.getItem('data'))
+  const dataArray = formatData(dataset)
+
+  Highcharts.chart('graph', {
+    title: {
+      text: 'My Moods'
+    },
+
+    subtitle: {
+      text: 'your moods over time'
+    },
+
+    yAxis: {
+      title: {
+        text: 'happiness'
+      }
+    },
+
+    xAxis: {
+      type: 'datetime'
+    },
+
+    legend: {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle'
+    },
+
+    plotOptions: {
+      series: {
+        label: {
+          connectorAllowed: false
+        }
+      }
+    },
+
+    series: [{
+      name: 'mood',
+      data: dataArray
+    }],
+    responsive: {
+      rules: [{
+        condition: {
+          maxWidth: 500
+        },
+        chartOptions: {
+          legend: {
+            layout: 'horizontal',
+            align: 'center',
+            verticalAlign: 'bottom'
+          }
+        }
+      }]
+    }
+
+  });
+
+  function formatData(dataset) {
+    const dataArray = []
+    for (let date in dataset) {
+      dataArray.push([parseInt(date)+18000000, dataset[date].score])
+    }
+    return dataArray
+  }
+}
+
+module.exports = renderGraph;
+
+},{}],6:[function(require,module,exports){
 const temp = require('./template-grid')
 const renderEmo = require('./renderEmo')
 
@@ -4588,10 +4656,11 @@ function renderGrid(emotions) {
 
 module.exports = renderGrid;
 
-},{"./renderEmo":6,"./template-grid":7}],6:[function(require,module,exports){
+},{"./renderEmo":7,"./template-grid":8}],7:[function(require,module,exports){
 const templatesComics = require('./templates-comics')
 const templatesVideos = require("./templates-videos")
 const moodRating = require("./mood-rating")
+const renderGraph = require("./render-graph")
 
 const urls = require('./urls')
 let moment = require('moment')
@@ -4600,7 +4669,7 @@ const renderEmo = (emotion) => {
   const urlEmo = urls[emotion]
   const thisMoment = moment()
 
-  const string =
+  const emoticonContent =
     `<div class="${emotion} text-center">
     <img src="/emotions/${emotion}.PNG" width="110px" alt="${emotion}">
     <h6 class="display-4">You are ${emotion}, then me too.</h6>
@@ -4610,12 +4679,7 @@ const renderEmo = (emotion) => {
   ${templatesComics.checkOutComics(emotion)}
 
   <div class="ask text-center mt-4">
-    <p class="big-text">Do you feel better now?</p>
-    <span>
-      <i class="far fa-thumbs-up  thumbsUp"></i>
-      <i class="far fa-thumbs-down  thumbsDown"></i>
-    </span>
-  <br>
+
 
   <!-- Button trigger modal -->
 <button type="button" class="btn btn-outline-success btn-sm center mb-3 mt-3" data-toggle="modal" data-target="#Modal">
@@ -4654,15 +4718,21 @@ const renderEmo = (emotion) => {
   </div>
  </div>
     `
-  document.querySelector('#emoticons').innerHTML = string;
+  document.querySelector('#emoticons').innerHTML = emoticonContent;
+
+  document.querySelector('#myForm').addEventListener('submit', saveData)
+  document.querySelector('#myForm').addEventListener('submit', updateGraph)
+
+  function updateGraph(event) {
+    renderGraph()
+  }
 
   function saveData(event) {
     event.preventDefault()
 
     let note = document.querySelector('#userNote').value
     const millisThisMoment = thisMoment.valueOf().toString()
-    const newData =
-    {
+    const newData = {
       "score": moodRating[emotion],
       "emotion": emotion,
       "note": note
@@ -4676,14 +4746,11 @@ const renderEmo = (emotion) => {
     data[millisThisMoment] = newData
     localStorage.setItem("data", JSON.stringify(data))
   }
-  document.querySelector('#myForm').addEventListener('submit', saveData)
 }
-
-
 
 module.exports = renderEmo;
 
-},{"./mood-rating":4,"./templates-comics":8,"./templates-videos":9,"./urls":10,"moment":1}],7:[function(require,module,exports){
+},{"./mood-rating":4,"./render-graph":5,"./templates-comics":9,"./templates-videos":10,"./urls":11,"moment":1}],8:[function(require,module,exports){
 const emotionGrid = (emotion) => {
 
   return `
@@ -4701,11 +4768,10 @@ const templateGrid = (emotions) => {
   return `
   <div>
     <div class="greeting">
-      <h6 class="display-4">Hi</h6>
-      <h6 class="display-4">How do you feel?</h6>
+      <h6 class="display-4">Hi there, how do you feel?</h6>
     </div>
 
-    <div class="d-flex flex-wrap justify-content-center mt-4 text-center">
+    <div class="d-flex flex-wrap justify-content-center mt-2 text-center">
       ${grids}
     </div>
   </div>
@@ -4717,7 +4783,7 @@ module.exports = {
   templateGrid
 }
 
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 function comic(emotion, index) {
   return `
   <div class="col">
@@ -4747,7 +4813,7 @@ module.exports = {
   checkOutComics
 }
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 function video(url) {
   return `
     <div class="col">
@@ -4774,7 +4840,7 @@ module.exports = {
   checkOutVideos
 }
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 let urls = {
   "happy": [
     "https://www.youtube.com/embed/MOWDb2TBYDg?ecver=1",

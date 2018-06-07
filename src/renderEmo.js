@@ -1,6 +1,7 @@
 const templatesComics = require('./templates-comics')
 const templatesVideos = require("./templates-videos")
 const moodRating = require("./mood-rating")
+const renderGraph = require("./render-graph")
 
 const urls = require('./urls')
 let moment = require('moment')
@@ -9,7 +10,7 @@ const renderEmo = (emotion) => {
   const urlEmo = urls[emotion]
   const thisMoment = moment()
 
-  const string =
+  const emoticonContent =
     `<div class="${emotion} text-center">
     <img src="/emotions/${emotion}.PNG" width="110px" alt="${emotion}">
     <h6 class="display-4">You are ${emotion}, then me too.</h6>
@@ -19,12 +20,7 @@ const renderEmo = (emotion) => {
   ${templatesComics.checkOutComics(emotion)}
 
   <div class="ask text-center mt-4">
-    <p class="big-text">Do you feel better now?</p>
-    <span>
-      <i class="far fa-thumbs-up  thumbsUp"></i>
-      <i class="far fa-thumbs-down  thumbsDown"></i>
-    </span>
-  <br>
+
 
   <!-- Button trigger modal -->
 <button type="button" class="btn btn-outline-success btn-sm center mb-3 mt-3" data-toggle="modal" data-target="#Modal">
@@ -63,15 +59,21 @@ const renderEmo = (emotion) => {
   </div>
  </div>
     `
-  document.querySelector('#emoticons').innerHTML = string;
+  document.querySelector('#emoticons').innerHTML = emoticonContent;
+
+  document.querySelector('#myForm').addEventListener('submit', saveData)
+  document.querySelector('#myForm').addEventListener('submit', updateGraph)
+
+  function updateGraph(event) {
+    renderGraph()
+  }
 
   function saveData(event) {
     event.preventDefault()
 
     let note = document.querySelector('#userNote').value
     const millisThisMoment = thisMoment.valueOf().toString()
-    const newData =
-    {
+    const newData = {
       "score": moodRating[emotion],
       "emotion": emotion,
       "note": note
@@ -85,9 +87,6 @@ const renderEmo = (emotion) => {
     data[millisThisMoment] = newData
     localStorage.setItem("data", JSON.stringify(data))
   }
-  document.querySelector('#myForm').addEventListener('submit', saveData)
 }
-
-
 
 module.exports = renderEmo;

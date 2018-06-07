@@ -40,7 +40,7 @@
 
   <!-- Modal Login -->
   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalCenterTitle">Hi there</h5>
@@ -55,12 +55,12 @@
               <input type="text" class="form-control" id="modalName" placeholder="" required maxlength="20">
               <small id="namehelp" class="form-text text-muted">Max 20 characters</small>
             </div>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" id="saveName">Save changes</button>
           </form>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary" id="saveName">Save changes</button>
-        </div>
+
+
       </div>
     </div>
   </div>
@@ -71,13 +71,10 @@
   <section id="emoticons">
   </section>
   <section id="progress">
+    <h4 id="user-name" class="text-center"></h4>
     <div class="container">
       <div class="row">
-        <div class="col" id="average-score">
-          
-        </div>
         <div class="col" id="graph">
-
         </div>
       </div>
     </div>
@@ -101,6 +98,11 @@
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/modules/series-label.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
   <script type="text/javascript" src="/bundle.js">
   </script>
 </body>

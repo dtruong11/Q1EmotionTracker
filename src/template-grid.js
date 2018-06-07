@@ -15,11 +15,10 @@ const templateGrid = (emotions) => {
   return `
   <div>
     <div class="greeting">
-      <h6 class="display-4">Hi</h6>
-      <h6 class="display-4">How do you feel?</h6>
+      <h6 class="display-4">Hi there, how do you feel?</h6>
     </div>
 
-    <div class="d-flex flex-wrap justify-content-center mt-4 text-center">
+    <div class="d-flex flex-wrap justify-content-center mt-2 text-center">
       ${grids}
     </div>
   </div>

@@ -59,3 +59,10 @@ i:hover {
   transform: scale(1.3);
   color: limeGreen
 }
+
+#graph {
+	min-width: 310px;
+	max-width: 800px;
+	height: 400px;
+	margin: 0 auto
+}
