@@ -1,0 +1,30 @@
+const moodRating = {
+"happy" : 5,
+"sad" : 1,
+"mad" : 1,
+"brave" : 5,
+"embarrassed" : 3,
+"friendly" : 5,
+"sorry" : 1,
+"disappointed" : 1,
+"frustrated" : 1,
+"silly" : 3,
+"hopeful" : 4,
+"left-out" : 2,
+"excited" : 5,
+"jealous" : 2,
+"curious" : 4,
+"cranky" : 1,
+"insecure" : 2,
+"greatful" : 4,
+"loved" : 5,
+"guilty" : 1,
+"uncomfortable" : 2,
+"shy" : 2,
+"hurt" : 1,
+"surprised" : 3,
+"scared" : 1,
+"kind" : 5
+}
+
+module.exports = moodRating; 

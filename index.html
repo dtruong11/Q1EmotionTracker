@@ -25,16 +25,13 @@
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link a-color" href="#">home <span class="sr-only">(current)</span></a>
+            <a class="nav-link a-color" href="#home">home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link a-color" href="#">progress</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link a-color" href="#">favorite activities</a>
+            <a class="nav-link a-color" href="#progress">progress</a>
           </li>
           <li class='nav-item'>
-            <a class="nav-link a-color" href="#" data-toggle="modal" data-target="#exampleModalCenter">login</a>
+            <a class="nav-link a-color" href="#" data-toggle="modal" data-target="#exampleModalCenter">name</a>
           </li>
         </ul>
       </div>
@@ -46,185 +43,66 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalCenterTitle">Hi there</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form id="form1">
             <div class="form-group">
-              <label for="name">Hi there, what's your name?</label>
-              <input type="text" class="form-control" id="modalName" placeholder="">
-              <small id="namehelp" class="form-text text-muted">Your name is safe with me.</small>
+              <label for="name">What's your name?<span class="required">*</span></label>
+              <input type="text" class="form-control" id="modalName" placeholder="" required maxlength="20">
+              <small id="namehelp" class="form-text text-muted">Max 20 characters</small>
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary" id="saveName">Save changes</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- <div class="home">
 
-    Greeting & ask about feelings
-    <div class="greeting">
-      <h6 class="display-4">Hi</h6>
-      <h6 class="display-4">How do you feel?</h6>
-    </div>
-
-     flex emotions table
-    <div class="d-flex flex-wrap justify-content-center mt-4 text-center">
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/happy.PNG" width="60%" alt="happy">
-      </div>
-      <div class="emotion p-2 col-sm-6 col-md-4   border border-warning">
-        <img src="/emotions/sad.PNG" width="60%" alt="sad">
-      </div>
-      <div class="emotion p-2 col-sm-6 col-md-4   border border-warning">
-        <img src="/emotions/angry.PNG" width="60%" alt="mad">
-      </div>
-      <div class="emotion p-2 col-sm-6 col-md-4   border border-warning">
-        <img src="/emotions/brave.PNG" width="60%" alt="brave">
-      </div>
-      <div class="emotion p-2 col-sm-6 col-md-4   border border-warning">
-        <img src="/emotions/embarassed.PNG" width="60%" alt="embarassed">
-      </div>
-      <div class="emotion p-2 col-sm-6 col-md-4   border border-warning">
-        <img src="/emotions/friendly.PNG" width="60%" alt="friendly">
-      </div>
-      <div class="emotion p-2 col-sm-6 col-md-4   border border-warning">
-        <img src="/emotions/sorry.PNG" width="60%" alt="sorry">
-      </div>
-
-
-
-      <div class="emotion p-2 col-sm-6 col-md-4   border border-warning">
-        <img src="/emotions/disappointed.PNG" width="60%" alt="disappointed">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  col-sm-6  border border-warning">
-        <img src="/emotions/frustrated.PNG" width="60%" alt="frustrated">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  col-sm-6 border border-warning">
-        <img src="/emotions/silly.PNG" width="60%" alt="silly">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/hopeful.PNG" width="60%" alt="hopeful">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/left-out.PNG" width="60%" alt="left-out">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/excited.PNG" width="60%" alt="excited">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/jealous.PNG" width="60%" alt="jealous">
-      </div>
-
-
-      <div class="p-2 emotion  col-sm-6 col-md-4 border border-warning">
-        <img src="/emotions/curious.PNG" width="60%" alt="curious">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/cranky.PNG" width="60%" alt="cranky">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/sensitive.PNG" width="60%" alt="sensitive">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/proud.PNG" width="60%" alt="proud">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/insecure.PNG" width="60%" alt="insecure">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/greatful.PNG" width="60%" alt="greatful">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/loved.PNG" width="60%" alt="loved">
-      </div>
-
-
-      <div class="p-2 emotion  col-sm-6 col-md-4 border border-warning">
-        <img src="/emotions/guilty.PNG" width="60%" alt="guilty">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/uncomfortable.PNG" width="60%" alt="uncomfortable">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/shy.PNG" width="60%" alt="shy">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/hurt.PNG" width="60%" alt="hurt">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/surprised.PNG" width="60%" alt="surprised">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/scared.PNG" width="60%" alt="scared">
-      </div>
-      <div class="p-2 emotion  col-sm-6 col-md-4  border border-warning">
-        <img src="/emotions/kind.PNG" width="60%" alt="kind">
-      </div>
-    </div>
-
-  </div>
-
-  show happy content
-  <div class="happy text-center">
-    <img src="/emotions/happy.PNG" width="110px" alt="happy">
-    <h6 class="display-4">You are happy, then me too.</h6>
-
-    <p>Check out these videos</p>
-    <div class="container mb-2">
-      <div class="row">
-        <div class="col">
-          <iframe width="80%" src="https://www.youtube.com/embed/MOWDb2TBYDg?ecver=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-          </iframe>
-        </div>
-        <div class="col">
-          <iframe width="80%" src="https://www.youtube.com/embed/uh4dTLJ9q9o?ecver=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-        <div class="col">
-          <iframe width="80%" src="https://www.youtube.com/embed/XyMQ-cgJrJo?ecver=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-
-    <p>Check out these comic strips</p>
+  <section id="home" class="home">
+  </section>
+  <section id="emoticons">
+  </section>
+  <section id="progress">
     <div class="container">
       <div class="row">
-        <div class="col">
-          <img src="/comics/happy-1.jpg" alt="happy-comic1" class="comics">
+        <div class="col" id="average-score">
+          
         </div>
-        <div class="col">
-          <img src="/comics/happy-3.jpg" alt="happy-comic" class="comics">
-        </div>
-        <div class="col">
-          <img src="/comics/happy-2.jpg" alt="happy-comic" class="comics">
-        </div>
-        <div class="col">
-          <img src="/comics/happy-4.jpg" alt="happy-comic" class="comics">
+        <div class="col" id="graph">
+
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="ask">
-      <p>Do you feel better now?</p>
-      <span>
-        <i class="far fa-thumbs-up"></i>
-        <i class="far fa-thumbs-down"></i>
-      </span>
-    </div>
-  </div> -->
-  <script type="text/javascript" src="/bundle.js">
-  </script>
+
+
+  <!-- Date picker bootstrap CDN -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js">
+  </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js">
+  </script> -->
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <script type="text/javascript" src="/bundle.js">
+  </script>
 </body>
 
 </html>

@@ -1,26 +1,24 @@
-const renderEmo = require('./renderEmo')
 const renderGrid = require('./render-grid')
 const emotions = require('./emotion-list')
 
 renderGrid(emotions);
 
-//Add event listener to div containing images + render specific div
-const arrEmo = Array.from(document.querySelectorAll('.emotion'))
+document.querySelector('#saveName').addEventListener("click", saveName)
 
-arrEmo.forEach((emotion) => {
-  emotion.addEventListener('click', () => {
-    renderEmo(emotion)
-  })
-})
+function saveName (event){
+   event.preventDefault()
+   const loginName = document.querySelector('#modalName').value
+   localStorage.setItem("name", loginName)
+}
 
-//get the input from the modal
-const loginName = document.querySelector('#modalName').value
-
-//add click event listner to thumbup, thumbdown
-const thumbsUps = Array.from(document.querySelectorAll('.thumbsUp'))
-const thumbsDowns = Array.from(document.querySelectorAll('.thumbsDown'))
-thumbsDown.forEach((down) => {
-  down.addEventListener("click", () => {
-    //
-  })
-})
+//Save like rate to local storage
+// document.querySelector('.thumbsUp').addEventListener('click', like)
+//
+// function like (event) {
+//   const countUpStr = localStorage.getItem('countUp')
+//     if (countUpStr) {
+//     const countUps = JSON.parse(localStorage.getItem("countUp"));
+//     countUps ++
+//   }
+//
+// }

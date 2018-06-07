@@ -1,7 +1,7 @@
 function comic(emotion, index) {
   return `
   <div class="col">
-    <img src="/comics/${emotion}/${emotion}${index}.jpg" alt="${emotion}${index}" class="comics">
+    <img src="/comics/${emotion}/${emotion}${index}.jpg" alt="${emotion}${index}" class="comics" width="100%">
   </div>
   `
 }
@@ -13,9 +13,11 @@ function checkOutComics(emotion) {
   }
 
   return `
-  <p>Check out these comic strips</p>
+  <p class="text-center big-text">Check out these comic strips</p>
     <div class="container">
+      <div class="row">
       ${result}
+      </div>
     </div>
 `
 }
