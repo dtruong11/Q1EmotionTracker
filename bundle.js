@@ -4598,6 +4598,7 @@ let moment = require('moment')
 
 const renderEmo = (emotion) => {
   const urlEmo = urls[emotion]
+  const thisMoment = moment()
 
   const string =
     `<div class="${emotion} text-center">
@@ -4635,10 +4636,10 @@ const renderEmo = (emotion) => {
       <form id="myForm" >
         <div class="form-group">
         <label class="control-label " for="date" id="date">
-         ${moment().format('LL')}
+         ${thisMoment.format('LL')}
         </label>
         <label class="control-label " for="time" id="time">
-         ${moment().format('LT')}
+         ${thisMoment.format('LT')}
         </label>
          <div class="form-group">
           <input id="userNote" class="form-control form-control-sm" type="text" placeholder="your note" maxlength="30">
@@ -4657,35 +4658,23 @@ const renderEmo = (emotion) => {
 
   function saveData(event) {
     event.preventDefault()
-    let currentDate = document.querySelector('#date').innerHTML.trim()
-    let currentTime = document.querySelector('#time').innerHTML.trim()
-    let score = moodRating[emotion]
+
     let note = document.querySelector('#userNote').value
-    const dataObj = {
-      "currentTime": currentTime,
-      "score": score,
+    const millisThisMoment = thisMoment.valueOf().toString()
+    const newData =
+    {
+      "score": moodRating[emotion],
+      "emotion": emotion,
       "note": note
     }
 
     //check in local storage, if exists, parse/ if not, create data
-    let dataString = localStorage.getItem('data')
-    function findCurrentDate () {
-      const value = JSON.parse(dataString).find(obj => obj[currentDate])
-
+    let data = JSON.parse(localStorage.getItem('data'))
+    if (!data) {
+      data = {}
     }
-    if (dataString && JSON.parse(dataString).find(obj => obj[currentDate])) {
-      const data = JSON.parse(dataString)
-
-
-      data[currentDate].push(dataObj)
-      localStorage.setItem("data", JSON.stringify([data]))
-
-    } else {
-      const data = []
-      const nestedDateTime = {currentDate : [dataObj]}
-      data.push(nestedDateTime)
-      localStorage.setItem("data", JSON.stringify(data))
-    }
+    data[millisThisMoment] = newData
+    localStorage.setItem("data", JSON.stringify(data))
   }
   document.querySelector('#myForm').addEventListener('submit', saveData)
 }
