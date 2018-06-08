@@ -5878,7 +5878,6 @@ function renderGraph() {
         note: date.note
       })
     }
-    console.log(moment(dataArray[0].x).format('hh:mm A'))
     return dataArray
   }
 }
