@@ -69,3 +69,7 @@ img.comics:hover {
 	height: 400px;
 	margin: 0 auto
 }
+
+.graph-text {
+  font-size: 12px;
+}
