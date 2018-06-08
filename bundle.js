@@ -6070,7 +6070,7 @@ module.exports = {
 function video(url) {
   return `
     <div class="col">
-      <iframe width="80%" src="${url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <iframe width="90%" src="${url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
     </div>
   `
 }
