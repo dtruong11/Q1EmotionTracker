@@ -9,6 +9,11 @@
   width: 110px;
 }
 
+.emotion img:hover {
+  transform: scale(1.3)
+
+}
+
 .logo {
   min-width: 30px;
   width: 40px;
@@ -50,9 +55,10 @@ img.comics:hover {
   transform: scale(1.4)
 }
 
-i:hover {
-  transform: scale(1.3);
-  color: limeGreen
+.progress-stats {
+  margin-top: 200px;
+  margin-bottom: 300px;
+
 }
 
 #graph {

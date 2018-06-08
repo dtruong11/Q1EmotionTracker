@@ -14,9 +14,9 @@ const renderEmo = (emotion) => {
   const thisMoment = moment();
 
   const emoticonContent =
-    `<div class="${emotion} text-center">
+    `<div class="${emotion} text-center mt-5">
     <img src="/emotions/${emotion}.PNG" width="110px" alt="${emotion}">
-    <h6 class="display-4">You are ${emotion}, then me too.</h6>
+    <h6 class="display-4 mb-4">You are ${emotion}, then me too.</h6>
   </div>
 
   ${templatesVideos.checkOutVideos(urlEmo)}

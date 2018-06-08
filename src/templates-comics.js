@@ -13,8 +13,8 @@ function checkOutComics(emotion) {
   }
 
   return `
-  <p class="text-center big-text">Check out these comic strips</p>
-    <div class="container">
+  <p class="text-center big-text mt-3">Check out these comic strips</p>
+    <div class="container mb-2">
       <div class="row">
       ${result}
       </div>

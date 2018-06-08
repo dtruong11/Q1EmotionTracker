@@ -5921,9 +5921,9 @@ const renderEmo = (emotion) => {
   const thisMoment = moment();
 
   const emoticonContent =
-    `<div class="${emotion} text-center">
+    `<div class="${emotion} text-center mt-5">
     <img src="/emotions/${emotion}.PNG" width="110px" alt="${emotion}">
-    <h6 class="display-4">You are ${emotion}, then me too.</h6>
+    <h6 class="display-4 mb-4">You are ${emotion}, then me too.</h6>
   </div>
 
   ${templatesVideos.checkOutVideos(urlEmo)}
@@ -6008,7 +6008,7 @@ module.exports = renderEmo;
 const emotionGrid = (emotion) => {
 
   return `
-    <div class="p-2 emotion  col-sm-6 col-md-4 col-lg-3" id="${emotion}">
+    <div class=" p-4 emotion  col-sm-6 col-md-4 col-lg-3" id="${emotion}">
       <a href="#emoticons">
         <img src="/emotions/${emotion}.PNG" width="60%" alt="${emotion}">
       </a>
@@ -6020,12 +6020,12 @@ const templateGrid = (emotions) => {
   const grids = emotions.map(emotion =>  { return emotionGrid(emotion)}).join('')
 
   return `
-  <div>
+  <div mt-2>
     <div class="greeting">
       <h6 class="display-4">Hi there, how do you feel?</h6>
     </div>
 
-    <div class="d-flex flex-wrap justify-content-center mt-2 text-center">
+    <div class="d-flex flex-wrap justify-content-center text-center">
       ${grids}
     </div>
   </div>
@@ -6053,8 +6053,8 @@ function checkOutComics(emotion) {
   }
 
   return `
-  <p class="text-center big-text">Check out these comic strips</p>
-    <div class="container">
+  <p class="text-center big-text mt-3">Check out these comic strips</p>
+    <div class="container mb-2">
       <div class="row">
       ${result}
       </div>

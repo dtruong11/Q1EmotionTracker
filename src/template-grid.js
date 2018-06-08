@@ -1,7 +1,7 @@
 const emotionGrid = (emotion) => {
 
   return `
-    <div class="p-2 emotion  col-sm-6 col-md-4 col-lg-3" id="${emotion}">
+    <div class=" p-4 emotion  col-sm-6 col-md-4 col-lg-3" id="${emotion}">
       <a href="#emoticons">
         <img src="/emotions/${emotion}.PNG" width="60%" alt="${emotion}">
       </a>
@@ -13,12 +13,12 @@ const templateGrid = (emotions) => {
   const grids = emotions.map(emotion =>  { return emotionGrid(emotion)}).join('')
 
   return `
-  <div>
+  <div mt-2>
     <div class="greeting">
       <h6 class="display-4">Hi there, how do you feel?</h6>
     </div>
 
-    <div class="d-flex flex-wrap justify-content-center mt-2 text-center">
+    <div class="d-flex flex-wrap justify-content-center text-center">
       ${grids}
     </div>
   </div>
