@@ -17,3 +17,7 @@ The progress page shows your mood trends over time.
 
 This site is deployed through surge.
 https://emo-tracker.surge.sh/
+
+Note:
++ This application is for one user on one machine.
++ Characters are from Kimochis.
