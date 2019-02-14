@@ -13,8 +13,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browserify": "^16.2.2",
-    "live-server": "^1.2.0",
+    "browserify": "^16.2.3",
+    "live-server": "^1.2.1",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.17",
     "run-all": "^1.0.1",
